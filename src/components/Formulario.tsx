@@ -5,4 +5,4 @@ export default function Formulario() {
             <button disabled={true}>Adicionar</button>
         </form>
     )
-}
+} 

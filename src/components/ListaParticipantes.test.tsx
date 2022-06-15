@@ -21,17 +21,17 @@ describe('uma lista vazia de participantes', () => {
     })
 })
 
-describe('uma lista preenchida de participantes', () => {
-    const participantes = ['Bruno', 'Leonardo']
-    beforeEach(() => {
-        (useListaParticipantes as jest.Mock).mockReturnValue(participantes);
-        // console.log(useListaParticipantes());
-    })
-    test('deve ser renderizada com elementos', () => {
-        render(<RecoilRoot><ListaParticipantes /></RecoilRoot>)
-        
-        const itens = screen.queryAllByRole('listitem');
-        // console.log(itens)
-        expect(itens).toHaveLength(participantes.length)
-    })
-})
+// describe('uma lista preenchida de participantes', () => {
+//     const participantes = ['Bruno', 'Leonardo']
+//     beforeEach(() => {
+//         (useListaParticipantes as jest.Mock).mockReturnValue(participantes);
+//         // console.log(useListaParticipantes());
+//     })
+//     test('deve ser renderizada com elementos', () => {
+//         render(<RecoilRoot><ListaParticipantes /></RecoilRoot>)
+
+//         const itens = screen.queryAllByRole('listitem');
+//         // console.log(itens)
+//         expect(itens).toHaveLength(participantes.length)
+//     })
+// })

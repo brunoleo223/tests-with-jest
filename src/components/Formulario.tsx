@@ -1,29 +1,39 @@
-import React, { useRef, useState } from "react"
-import { useAdicionarParticipante } from "../stale/hooks/useAdicionarParticipantes";
-import { useMensagemDeErro } from "../stale/hooks/useMensagemDeErro";
+import { useRef, useState } from "react"
+import { useAdicionarParticipante } from "../stale/hooks/useAdicionarParticipantes"
+import { useMensagemDeErro } from "../stale/hooks/useMensagemDeErro"
 
-export default function Formulario() {
-    const [nome, setNome] = useState('');
-    const inputRef = useRef<HTMLInputElement>(null);
-    const adicionarNaLista = useAdicionarParticipante();
-    const mensagemDeErro = useMensagemDeErro();
+import './Formulario.css'
+
+const Formulario = () => {
+
+    const [nome, setNome] = useState('')
+
+    const inputRef = useRef<HTMLInputElement>(null)
+
+    const adicionarNaLista = useAdicionarParticipante()
+
+    const mensagemDeErro = useMensagemDeErro()
+
     const adicionarParticipante = (evento: React.FormEvent<HTMLFormElement>) => {
-        evento.preventDefault();
-        adicionarNaLista(nome);
-        setNome('');
-        inputRef.current?.focus();
+        evento.preventDefault()
+        adicionarNaLista(nome)
+        setNome('')
+        inputRef.current?.focus()
     }
-    return(
-        <form onSubmit={adicionarParticipante}>
-            <input 
+
+    return (<form onSubmit={adicionarParticipante}>
+        <div className="grupo-input-btn">
+            <input
                 ref={inputRef}
-                value={nome} 
-                onChange={(e) => setNome(e.target.value)} 
-                type="text" 
-                placeholder="Insira os nomes dos participantes" 
+                value={nome}
+                onChange={evento => setNome(evento.target.value)}
+                type="text"
+                placeholder="Insira os nomes dos participantes"
             />
             <button disabled={!nome}>Adicionar</button>
-            {mensagemDeErro && <p role="alert">{mensagemDeErro}</p>}
-        </form>
-    )
-} 
+        </div>
+        {mensagemDeErro && <p className="alerta erro" role="alert">{mensagemDeErro}</p>}
+    </form>)
+}
+
+export default Formulario
